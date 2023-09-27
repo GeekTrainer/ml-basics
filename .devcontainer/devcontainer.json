@@ -1,20 +1,36 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/anaconda-postgres
 {
-  "name": "Python 3 - Anaconda",
-	"context": "..",
-  "dockerFile": "Dockerfile",
-  
-  // Install python extension"
-  "extensions":["ms-python.python"],
-  
-  //Use Python 3.5 environment by defualt
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash",
-    "python.pythonPath": "/opt/conda/bin/python",
-    "terminal.integrated.inheritEnv": false,
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.linting.pylintPath": "/opt/conda/bin/pylint",
-    "python.dataScience.alwaysTrustNotebooks":true,
-    "python.showStartPage": false
-  },
+	"name": "Anaconda (Python 3) & PostgreSQL",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"features": {
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [5432],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "python --version",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-toolsai.jupyter",
+				"ms-azuretools.vscode-docker",
+				"GitHub.copilot"
+			]
+		}
+	},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
 }
